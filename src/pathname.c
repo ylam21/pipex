@@ -6,7 +6,7 @@
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 16:04:21 by omaly             #+#    #+#             */
-/*   Updated: 2025/10/15 19:48:05 by omaly            ###   ########.fr       */
+/*   Updated: 2025/10/15 19:58:44 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char	*join_path(const char *dir, const char *cmd)
 char	*find_pathname(const char *cmd, char **envp)
 {
 	char	**paths;
-	char	*path;
+	char	*pathname;
 	int		i;
 
 	i = 0;
@@ -53,15 +53,15 @@ char	*find_pathname(const char *cmd, char **envp)
 	i = 0;
 	while (paths[i] != NULL)
 	{
-		path = join_path(paths[i], cmd);
-		if (path == NULL)
+		pathname = join_path(paths[i], cmd);
+		if (pathname == NULL)
 			break ;
-		if (access(path, F_OK) == 0)
+		if (access(pathname, F_OK) == 0)
 		{
 			free_split(paths);
-			return (path);
+			return (pathname);
 		}
-		free(path);
+		free(pathname);
 		i++;
 	}
 	free_split(paths);
