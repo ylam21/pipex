@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.h                                             :+:      :+:    :+:   */
+/*   usage.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/15 19:34:21 by omaly             #+#    #+#             */
-/*   Updated: 2025/10/15 23:53:31 by omaly            ###   ########.fr       */
+/*   Created: 2025/10/15 21:41:23 by omaly             #+#    #+#             */
+/*   Updated: 2025/10/15 23:57:19 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FREE_H
-# define FREE_H
+#include "../includes/pipex.h"
 
-# include "pipex.h"
-
-typedef struct s_px	t_px;
-void				free_px(t_px *px);
-void				free_split(char **split);
-void				free_pipes(t_px *px);
-#endif
+void	usage(t_usage_type type)
+{
+	if (type == STANDARD)
+	{
+		ft_putstr_fd("Error: Invalid number of arguments\n", 2);
+		ft_putstr_fd("Usage: ./pipex infile cmd1 cmd2 ... cmdn outfile\n", 2);
+	}
+	else if (type == BONUS)
+	{
+		ft_putstr_fd("Error: Invalid number of arguments\n", 2);
+		ft_putstr_fd("Usage: ./pipex here_doc LIMITER cmd1 cmd2 cmdn outfile\n",
+			2);
+	}
+}

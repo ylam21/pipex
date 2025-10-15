@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.h                                             :+:      :+:    :+:   */
+/*   usage.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/15 19:34:21 by omaly             #+#    #+#             */
-/*   Updated: 2025/10/15 23:53:31 by omaly            ###   ########.fr       */
+/*   Created: 2025/10/15 21:39:25 by omaly             #+#    #+#             */
+/*   Updated: 2025/10/15 21:44:53 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FREE_H
-# define FREE_H
+#ifndef USAGE_H
+# define USAGE_H
 
-# include "pipex.h"
+typedef enum e_usage_type
+{
+	STANDARD,
+	BONUS
+}		t_usage_type;
 
-typedef struct s_px	t_px;
-void				free_px(t_px *px);
-void				free_split(char **split);
-void				free_pipes(t_px *px);
+void	usage(t_usage_type type);
 #endif

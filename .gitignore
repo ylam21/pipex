@@ -1,4 +1,6 @@
 .vscode
 pipex
 obj
+libft/obj
+libft/libft.a
 

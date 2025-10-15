@@ -6,7 +6,7 @@
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 19:26:19 by omaly             #+#    #+#             */
-/*   Updated: 2025/10/15 19:31:44 by omaly            ###   ########.fr       */
+/*   Updated: 2025/10/16 00:01:55 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	init_single_cmd(t_px *px, char **argv, char **envp, int i)
 {
 	char	**cmd_argv;
 
-	cmd_argv = ft_split(argv[i + 2], ' ');
+	cmd_argv = ft_split(argv[i + 2 + px->here_doc], ' ');
 	if (cmd_argv == NULL)
 	{
 		perror("ft_split");
@@ -58,10 +58,7 @@ int	init_cmds(t_px *px, char **argv, char **envp)
 
 	px->cmds = malloc(sizeof(t_cmd) * px->cmd_count);
 	if (px->cmds == NULL)
-	{
-		perror("malloc");
-		return (1);
-	}
+		return (perror("malloc"), 1);
 	i = 0;
 	while (i < px->cmd_count)
 	{
