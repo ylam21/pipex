@@ -6,7 +6,7 @@
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 19:24:31 by omaly             #+#    #+#             */
-/*   Updated: 2025/10/15 19:48:14 by omaly            ###   ########.fr       */
+/*   Updated: 2025/10/15 19:54:24 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	alloc_pipes(t_px *px, int pipe_count)
 		px->pipe_fds[i] = malloc(sizeof(int) * 2);
 		if (px->pipe_fds[i] == NULL)
 		{
+			perror("malloc");
 			free_pipes(px);
 			return (2);
 		}
@@ -49,6 +50,7 @@ int	init_pipes(t_px *px)
 	{
 		if (pipe(px->pipe_fds[i]) == -1)
 		{
+			perror("pipe");
 			free_pipes(px);
 			return (2);
 		}
