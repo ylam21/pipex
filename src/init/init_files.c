@@ -6,7 +6,7 @@
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 19:20:06 by omaly             #+#    #+#             */
-/*   Updated: 2025/10/15 19:22:40 by omaly            ###   ########.fr       */
+/*   Updated: 2025/10/15 20:36:00 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	init_files(t_px *px, int argc, char **argv)
 {
-	px->infile = open(argv[1], O_RDONLY | O_CREAT);
+	px->infile = open(argv[1], O_RDONLY);
 	if (px->infile == -1)
 	{
 		perror("open infile");
@@ -28,3 +28,4 @@ int	init_files(t_px *px, int argc, char **argv)
 	}
 	return (0);
 }
+
