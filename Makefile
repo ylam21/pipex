@@ -6,7 +6,7 @@
 #    By: omaly <omaly@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/08 17:18:58 by omaly             #+#    #+#              #
-#    Updated: 2025/10/08 17:30:23 by omaly            ###   ########.fr        #
+#    Updated: 2025/10/15 19:45:11 by omaly            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME_LIBFT = libft.a
 
 # Compilation and flags
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 # Commands
 RM = rm -rf
@@ -27,7 +27,14 @@ OBJ_DIR = obj
 LIBFT_DIR = libft
 
 # Source files
-SRC_FILES = $(SRC_DIR)/pipex.c
+SRC_FILES = $(SRC_DIR)/pipex.c \
+			$(SRC_DIR)/init/init_px.c \
+			$(SRC_DIR)/init/init_cmds.c \
+			$(SRC_DIR)/init/init_pipes.c \
+			$(SRC_DIR)/init/init_files.c \
+			$(SRC_DIR)/free.c \
+			$(SRC_DIR)/close_fds.c \
+			$(SRC_DIR)/pathname.c
 
 # Object files
 OBJ_FILES = $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRC_FILES))
@@ -47,6 +54,8 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c|$(OBJ_DIR)
 
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
+	mkdir -p $(OBJ_DIR)/init
+
 
 clean:
 	$(RM) $(OBJ_FILES) $(OBJ_DIR)

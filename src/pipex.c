@@ -6,42 +6,74 @@
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 17:21:37 by omaly             #+#    #+#             */
-/*   Updated: 2025/10/08 18:37:09by omaly            ###   ########.fr       */
+/*   Updated: 2025/10/15 19:04:34 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
+void	exec_cmd(t_px *px, int idx, char **envp)
+{
+	t_cmd	cmd;
+
+	cmd = px->cmds[idx];
+	if (dup2(cmd.in_fd, STDIN_FILENO) == -1)
+	{
+		free_px(px);
+		close_fds(px);
+		perror("dup2");
+		exit(EXIT_FAILURE);
+	}
+	if (dup2(cmd.out_fd, STDOUT_FILENO) == -1)
+	{
+		free_px(px);
+		close_fds(px);
+		perror("dup2");
+		exit(EXIT_FAILURE);
+	}
+	close_fds(px);
+	execve(cmd.pathname, cmd.argv, envp);
+	perror("execve");
+	exit(EXIT_FAILURE);
+}
+
+void	wait_children(t_px *px)
+{
+	int	i;
+
+	i = 0;
+	while (i < px->cmd_count)
+	{
+		wait(NULL);
+		i++;
+	}
+}
+
 int	main(int argc, char **argv, char **envp)
 {
-	int		fds[2];
+	t_px	px;
 	pid_t	pid;
+	int		i;
 
-	(void)envp;
-	(void)argv;
-	if (argc != 5)
+	if (init_px(&px, argc, argv, envp) != 0)
+		exit(EXIT_FAILURE);
+	i = 0;
+	while (i < px.cmd_count)
 	{
-		printf("Wrong number of arguments\n");
-		return (1);
+		pid = fork();
+		if (pid == -1)
+		{
+			close_fds(&px);
+			free_px(&px);
+			perror("fork");
+			exit(EXIT_FAILURE);
+		}
+		if (pid == 0)
+			exec_cmd(&px, i, envp);
+		i++;
 	}
-	if (pipe(fds) == -1)
-	{
-		printf("Error with opening pipe\n");
-		return (2);
-	}
-	pid = fork();
-	if (pid == -1)
-	{
-		printf("Error with fork\n");
-		close(fds[0]);
-		close(fds[1]);
-		return (3);
-	}
-	else if (pid == 0)
-	{
-		// child_process(fds);
-	}
-	wait(NULL);
-	// parent_process();
+	close_fds(&px);
+	free_px(&px);
+	wait_children(&px);
 	return (0);
 }
