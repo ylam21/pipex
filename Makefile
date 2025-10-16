@@ -6,7 +6,7 @@
 #    By: omaly <omaly@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/08 17:18:58 by omaly             #+#    #+#              #
-#    Updated: 2025/10/15 21:41:19 by omaly            ###   ########.fr        #
+#    Updated: 2025/10/16 19:34:01 by omaly            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ SRC_FILES = $(SRC_DIR)/pipex.c \
 			$(SRC_DIR)/free.c \
 			$(SRC_DIR)/close_fds.c \
 			$(SRC_DIR)/usage.c \
+			$(SRC_DIR)/heredoc.c \
 			$(SRC_DIR)/pathname.c
 
 # Object files
