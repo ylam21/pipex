@@ -6,7 +6,7 @@
 #    By: omaly <omaly@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/19 10:58:32 by omaly             #+#    #+#              #
-#    Updated: 2025/09/19 19:04:50 by omaly            ###   ########.fr        #
+#    Updated: 2025/10/16 20:12:52 by omaly            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,9 +58,8 @@ SRC = ft_isalpha \
 	ft_putchar_fd \
 	ft_putstr_fd \
 	ft_putendl_fd \
-	ft_putnbr_fd
-
-BONUS_SRC = ft_lstnew \
+	ft_putnbr_fd \
+	ft_lstnew \
 	ft_lstadd_front \
 	ft_lstsize \
 	ft_lstlast \
@@ -71,9 +70,7 @@ BONUS_SRC = ft_lstnew \
 	ft_lstmap
 
 SRCS = $(addprefix $(SRC_DIR)/, $(addsuffix .c, $(SRC)))
-BONUS_SRCS = $(addprefix $(BONUS_DIR)/, $(addsuffix .c, $(BONUS_SRC)))
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
-BONUS_OBJS = $(BONUS_SRCS:$(BONUS_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 all: $(NAME)
 
@@ -86,9 +83,6 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
 $(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
 
-bonus: $(OBJS) $(BONUS_OBJS)
-	ar rcs $(NAME) $(BONUS_OBJS)
-
 clean:
 	rm -rf $(OBJ_DIR)
 
@@ -97,4 +91,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re

@@ -6,7 +6,7 @@
 #    By: omaly <omaly@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/08 17:18:58 by omaly             #+#    #+#              #
-#    Updated: 2025/10/16 20:01:45 by omaly            ###   ########.fr        #
+#    Updated: 2025/10/16 20:13:11 by omaly            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,6 @@ $(NAME): $(OBJ_FILES) $(NAME_LIBFT)
 
 $(NAME_LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
-	$(MAKE) bonus -C $(LIBFT_DIR)
 
 # Create object files
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c|$(OBJ_DIR)
