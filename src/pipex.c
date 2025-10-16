@@ -6,7 +6,7 @@
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 17:21:37 by omaly             #+#    #+#             */
-/*   Updated: 2025/10/15 23:43:28 by omaly            ###   ########.fr       */
+/*   Updated: 2025/10/16 19:56:12 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	main(int argc, char **argv, char **envp)
 	int		i;
 
 	if (init_px(&px, argc, argv, envp) != 0)
-		exit(EXIT_FAILURE);
+		return (1);
 	i = 0;
 	while (i < px.cmd_count)
 	{

@@ -6,7 +6,7 @@
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 17:20:35 by omaly             #+#    #+#             */
-/*   Updated: 2025/10/16 00:00:08 by omaly            ###   ########.fr       */
+/*   Updated: 2025/10/16 19:59:49 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 // PROJECTS MODULES
 # include "free.h"
 # include "init.h"
-# include "usage.h"
 
 typedef struct s_cmd
 {

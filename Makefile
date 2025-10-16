@@ -6,7 +6,7 @@
 #    By: omaly <omaly@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/08 17:18:58 by omaly             #+#    #+#              #
-#    Updated: 2025/10/16 19:34:01 by omaly            ###   ########.fr        #
+#    Updated: 2025/10/16 20:01:45 by omaly            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,6 @@ SRC_FILES = $(SRC_DIR)/pipex.c \
 			$(SRC_DIR)/init/init_files.c \
 			$(SRC_DIR)/free.c \
 			$(SRC_DIR)/close_fds.c \
-			$(SRC_DIR)/usage.c \
 			$(SRC_DIR)/heredoc.c \
 			$(SRC_DIR)/pathname.c
 
