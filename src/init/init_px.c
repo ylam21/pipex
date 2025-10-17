@@ -6,26 +6,25 @@
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 15:47:14 by omaly             #+#    #+#             */
-/*   Updated: 2025/10/16 20:01:27 by omaly            ###   ########.fr       */
+/*   Updated: 2025/10/17 16:21:51 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/pipex.h"
 
-int	init_px(t_px *px, int argc, char **argv, char **envp)
+void	init_px(t_px *px, int argc, char **argv, char **envp)
 {
 	if (argc < 5)
-		return (1);
+		exit(EXIT_FAILURE);
 	px->here_doc = ft_strncmp(argv[1], "here_doc", 9) == 0;
 	px->cmd_count = argc - 3 - px->here_doc;
 	if (init_files(px, argc, argv) != 0)
-		return (2);
+		exit(EXIT_FAILURE);
 	if (init_pipes(px) != 0)
-		return (3);
+		exit(EXIT_FAILURE);
 	if (init_cmds(px, argv, envp) != 0)
 	{
 		free_pipes(px);
-		return (4);
+		exit(EXIT_FAILURE);
 	}
-	return (0);
 }

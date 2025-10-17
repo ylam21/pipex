@@ -6,7 +6,7 @@
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 17:21:37 by omaly             #+#    #+#             */
-/*   Updated: 2025/10/16 19:56:12 by omaly            ###   ########.fr       */
+/*   Updated: 2025/10/17 16:22:18 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	exec_cmd(t_px *px, int idx, char **envp)
 	close_fds(px);
 	execve(cmd.pathname, cmd.argv, envp);
 	perror("execve");
-	exit(EXIT_FAILURE);
+	exit(128);
 }
 
 void	wait_children(t_px *px)
@@ -55,8 +55,7 @@ int	main(int argc, char **argv, char **envp)
 	pid_t	pid;
 	int		i;
 
-	if (init_px(&px, argc, argv, envp) != 0)
-		return (1);
+	init_px(&px, argc, argv, envp);
 	i = 0;
 	while (i < px.cmd_count)
 	{
@@ -75,5 +74,5 @@ int	main(int argc, char **argv, char **envp)
 	close_fds(&px);
 	free_px(&px);
 	wait_children(&px);
-	return (0);
+	return (EXIT_SUCCESS);
 }
