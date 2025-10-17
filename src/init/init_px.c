@@ -6,7 +6,7 @@
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 15:47:14 by omaly             #+#    #+#             */
-/*   Updated: 2025/10/17 16:21:51 by omaly            ###   ########.fr       */
+/*   Updated: 2025/10/17 17:47:08 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,5 @@ void	init_px(t_px *px, int argc, char **argv, char **envp)
 	if (init_pipes(px) != 0)
 		exit(EXIT_FAILURE);
 	if (init_cmds(px, argv, envp) != 0)
-	{
-		free_pipes(px);
 		exit(EXIT_FAILURE);
-	}
 }

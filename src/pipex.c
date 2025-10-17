@@ -6,7 +6,7 @@
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 17:21:37 by omaly             #+#    #+#             */
-/*   Updated: 2025/10/17 16:22:18 by omaly            ###   ########.fr       */
+/*   Updated: 2025/10/17 18:26:31 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,18 @@ void	exec_cmd(t_px *px, int idx, char **envp)
 	cmd = px->cmds[idx];
 	if (dup2(cmd.in_fd, STDIN_FILENO) == -1)
 	{
-		free_px(px);
-		close_fds(px);
 		perror("dup2");
 		exit(EXIT_FAILURE);
 	}
 	if (dup2(cmd.out_fd, STDOUT_FILENO) == -1)
 	{
-		free_px(px);
-		close_fds(px);
 		perror("dup2");
 		exit(EXIT_FAILURE);
 	}
 	close_fds(px);
 	execve(cmd.pathname, cmd.argv, envp);
 	perror("execve");
-	exit(128);
+	exit(EXIT_FAILURE);
 }
 
 void	wait_children(t_px *px)
@@ -62,8 +58,6 @@ int	main(int argc, char **argv, char **envp)
 		pid = fork();
 		if (pid == -1)
 		{
-			close_fds(&px);
-			free_px(&px);
 			perror("fork");
 			exit(EXIT_FAILURE);
 		}
@@ -74,5 +68,5 @@ int	main(int argc, char **argv, char **envp)
 	close_fds(&px);
 	free_px(&px);
 	wait_children(&px);
-	return (EXIT_SUCCESS);
+	return (0);
 }

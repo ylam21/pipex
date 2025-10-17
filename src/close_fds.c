@@ -6,7 +6,7 @@
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 19:36:50 by omaly             #+#    #+#             */
-/*   Updated: 2025/10/15 23:43:45 by omaly            ###   ########.fr       */
+/*   Updated: 2025/10/17 18:08:51 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void	close_fds(t_px *px)
 	pipe_count = px->cmd_count - 1;
 	while (i < pipe_count)
 	{
-		close(px->pipe_fds[i][0]);
-		close(px->pipe_fds[i][1]);
+		close(px->pipes[i][0]);
+		close(px->pipes[i][1]);
 		i++;
 	}
 }

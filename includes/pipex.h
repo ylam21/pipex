@@ -6,7 +6,7 @@
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 17:20:35 by omaly             #+#    #+#             */
-/*   Updated: 2025/10/16 19:59:49 by omaly            ###   ########.fr       */
+/*   Updated: 2025/10/17 18:07:31 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef struct s_px
 	int		outfile;
 	int		cmd_count;
 	t_cmd	*cmds;
-	int		**pipe_fds;
+	int		**pipes;
 	int		here_doc;
 }			t_px;
 
