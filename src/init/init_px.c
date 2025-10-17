@@ -6,7 +6,7 @@
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 15:47:14 by omaly             #+#    #+#             */
-/*   Updated: 2025/10/17 17:47:08 by omaly            ###   ########.fr       */
+/*   Updated: 2025/10/17 18:56:42 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	init_px(t_px *px, int argc, char **argv, char **envp)
 	if (argc < 5)
 		exit(EXIT_FAILURE);
 	px->here_doc = ft_strncmp(argv[1], "here_doc", 9) == 0;
+	if (px->here_doc && argc < 6)
+		exit(EXIT_FAILURE);
 	px->cmd_count = argc - 3 - px->here_doc;
 	if (init_files(px, argc, argv) != 0)
 		exit(EXIT_FAILURE);
