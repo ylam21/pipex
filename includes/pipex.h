@@ -6,7 +6,7 @@
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 17:20:35 by omaly             #+#    #+#             */
-/*   Updated: 2025/10/17 18:07:31 by omaly            ###   ########.fr       */
+/*   Updated: 2025/10/21 14:21:04 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,6 @@ typedef struct s_px
 }			t_px;
 
 void		close_fds(t_px *px);
-char		*find_pathname(const char *cmd, char **envp);
+char		*find_pathname(char *cmd, char **envp);
 int			heredoc_pipe(char *limiter);
 #endif
