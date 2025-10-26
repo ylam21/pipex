@@ -12,11 +12,11 @@
 
 # Program Name
 NAME = pipex
-NAME_LIBFT = libft.a
+NAME_LIBFT = libft/libft.a
 
 # Compilation and flags
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror
 
 # Commands
 RM = rm -rf
